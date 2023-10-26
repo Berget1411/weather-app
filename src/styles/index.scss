@@ -1,0 +1,70 @@
+/* common reused styles */
+
+@mixin icon-size($pixel) {
+  height: $pixel;
+  width: $pixel;
+}
+
+@mixin button-styling {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* CSS Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Custom CSS */
+
+:root {
+}
+
+body {
+  background-color: rgb(139, 179, 255);
+  height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+img {
+  //recolor svg to white
+  filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
+    hue-rotate(320deg) brightness(112%) contrast(99%);
+}
