@@ -24,7 +24,7 @@ header {
   }
 }
 
-.search {
+#search-form {
   @include index.flex-center;
   gap: 15px;
   padding: 8px 14px;
