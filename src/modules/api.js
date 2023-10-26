@@ -35,7 +35,8 @@ const api = (() => {
       conditionText: data['current']['condition']['text'],
       conditionIcon: data['current']['condition']['icon'],
 
-      wind: data['current']['wind_mph'],
+      windMph: data['current']['wind_mph'],
+      windKph: data['current']['wind_kph'],
       humidity: data['current']['humidity'],
       UV: data['current']['UV'],
       visibility: data['current']['vis_km'],
@@ -60,7 +61,8 @@ const api = (() => {
         maxTempF: data['forecast']['forecastday'][i]['day']['maxtemp_f'],
         minTempC: data['forecast']['forecastday'][i]['day']['mintemp_f'],
         minTempF: data['forecast']['forecastday'][i]['day']['mintemp_f'],
-        maxWind: data['forecast']['forecastday'][i]['day']['maxwind_mph'],
+        maxWindMph: data['forecast']['forecastday'][i]['day']['maxwind_mph'],
+        maxWindKph: data['forecast']['forecastday'][i]['day']['maxwind_kph'],
         conditionIcon:
           data['forecast']['forecastday'][i]['day']['condition']['icon'],
       };
