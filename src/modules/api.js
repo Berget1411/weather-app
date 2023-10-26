@@ -1,7 +1,9 @@
+import { format, parseISO } from 'date-fns';
+
 const api = (() => {
   const API_KEY = '7160bd18f24a414b9b175538232510';
   const LOCATION = 'sweden';
-  const DAYS = '3';
+  const DAYS = '7';
 
   async function getWeatherData(location = LOCATION) {
     try {
@@ -24,7 +26,7 @@ const api = (() => {
     return {
       country: data['location']['country'],
       city: data['location']['city'],
-      time: data['location']['localtime'],
+      time: formatCurrentDate(data['location']['localtime']),
 
       tempC: data['current']['temp_c'],
       tempF: data['current']['temp_f'],
@@ -53,7 +55,7 @@ const api = (() => {
 
     for (let i = 1; i < parseInt(DAYS); i++) {
       let day = {
-        date: data['forecast']['forecastday'][i]['date'],
+        date: formatForecastDate(data['forecast']['forecastday'][i]['date']),
         maxTempC: data['forecast']['forecastday'][i]['day']['maxtemp_c'],
         maxTempF: data['forecast']['forecastday'][i]['day']['maxtemp_f'],
         minTempC: data['forecast']['forecastday'][i]['day']['mintemp_f'],
@@ -66,6 +68,14 @@ const api = (() => {
       forecastData.push(day);
     }
     return forecastData;
+  }
+
+  function formatCurrentDate(date) {
+    return format(parseISO(date), 'EEEE dd MMMM yyyy | hh:mm');
+  }
+
+  function formatForecastDate(date) {
+    return format(parseISO(date), 'EEEE');
   }
 
   return { getCurrentWeather, getWeatherForecast };
