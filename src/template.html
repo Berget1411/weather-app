@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Weather app</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <a class="banner" href="#">
+        <img src="assets/img/logo.svg.svg" alt="logo" />
+        <h1>Weather</h1>
+      </a>
+      <div class="search">
+        <input type="text" placeholder="Search location" />
+        <button id="clear-button">&#10005;</button>
+        <button id="search-button">
+          <img src="assets/img/search.svg.svg" alt="search" />
+        </button>
+      </div>
+      <div class="units">
+        <button id="metric">°C, km/h</button>
+        <button id="imperial">°F, mph</button>
+      </div>
+    </header>
+  </body>
 </html>
