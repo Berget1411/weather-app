@@ -23,7 +23,7 @@ const api = (() => {
 
     return {
       country: data['location']['country'],
-      city: data['location']['name'],
+      city: data['location']['city'],
       time: data['location']['localtime'],
 
       tempC: data['current']['temp_c'],
