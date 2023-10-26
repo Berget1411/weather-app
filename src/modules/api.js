@@ -6,26 +6,22 @@ const api = (() => {
   const DAYS = '7';
 
   async function getWeatherData(location = DEFAULT_LOCATION) {
-    try {
-      const response = await fetch(
-        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=${DAYS}`,
-        { mode: 'cors' },
-      );
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=${DAYS}`,
+      { mode: 'cors' },
+    );
 
-      const data = await response.json();
+    const data = await response.json();
 
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+    return data;
   }
 
   async function getCurrentWeather(location) {
     const data = await getWeatherData(location);
 
     return {
+      locationName: data['location']['name'],
       country: data['location']['country'],
-      city: data['location']['city'],
       time: formatCurrentDate(data['location']['localtime']),
 
       tempC: data['current']['temp_c'],
@@ -49,7 +45,7 @@ const api = (() => {
     };
   }
 
-  async function getWeatherForecast() {
+  async function getWeatherForecast(location) {
     const data = await getWeatherData(location);
 
     const forecastData = [];
