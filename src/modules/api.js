@@ -2,10 +2,10 @@ import { format, parseISO } from 'date-fns';
 
 const api = (() => {
   const API_KEY = '7160bd18f24a414b9b175538232510';
-  const LOCATION = 'sweden';
+  const DEFAULT_LOCATION = 'sweden';
   const DAYS = '7';
 
-  async function getWeatherData(location = LOCATION) {
+  async function getWeatherData(location = DEFAULT_LOCATION) {
     try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=${DAYS}`,
