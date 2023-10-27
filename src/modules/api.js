@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns';
 const api = (() => {
   const API_KEY = '7160bd18f24a414b9b175538232510';
   const DEFAULT_LOCATION = 'sweden';
-  const DAYS = '7';
+  const DAYS = '8';
 
   async function getWeatherData(location = DEFAULT_LOCATION) {
     const response = await fetch(
@@ -51,7 +51,7 @@ const api = (() => {
     return usedData;
   }
 
-  async function getWeatherForecast(location) {
+  async function getWeatherForecast(location, unit) {
     const data = await getWeatherData(location);
 
     const forecastData = [];
@@ -59,15 +59,21 @@ const api = (() => {
     for (let i = 1; i < parseInt(DAYS); i++) {
       let day = {
         date: formatForecastDate(data['forecast']['forecastday'][i]['date']),
-        maxTempC: data['forecast']['forecastday'][i]['day']['maxtemp_c'],
-        maxTempF: data['forecast']['forecastday'][i]['day']['maxtemp_f'],
-        minTempC: data['forecast']['forecastday'][i]['day']['mintemp_f'],
-        minTempF: data['forecast']['forecastday'][i]['day']['mintemp_f'],
-        maxWindMph: data['forecast']['forecastday'][i]['day']['maxwind_mph'],
-        maxWindKph: data['forecast']['forecastday'][i]['day']['maxwind_kph'],
         conditionIcon:
           data['forecast']['forecastday'][i]['day']['condition']['icon'],
       };
+
+      if (unit === 'metric') {
+        day['maxTemp'] = data['forecast']['forecastday'][i]['day']['maxtemp_c'];
+        day['minTemp'] = data['forecast']['forecastday'][i]['day']['mintemp_c'];
+        day['maxWind'] =
+          data['forecast']['forecastday'][i]['day']['maxwind_kph'];
+      } else {
+        day['maxTemp'] = data['forecast']['forecastday'][i]['day']['maxtemp_f'];
+        day['minTemp'] = data['forecast']['forecastday'][i]['day']['mintemp_f'];
+        day['maxWind'] =
+          data['forecast']['forecastday'][i]['day']['maxwind_mph'];
+      }
 
       forecastData.push(day);
     }
