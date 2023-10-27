@@ -3,7 +3,10 @@ const dom = (() => {
 
   function displayCurrentWeather(res) {
     main.innerHTML = '';
-    main.append(weatherHeading(res), weatherBody(res));
+    const currentWeather = document.createElement('div');
+    currentWeather.classList.add('current-weather-section');
+    currentWeather.append(weatherHeading(res), weatherBody(res));
+    main.append(currentWeather);
   }
 
   function weatherHeading(res) {
@@ -11,6 +14,7 @@ const dom = (() => {
     weatherHeading.classList.add('weather-heading');
     const location = document.createElement('h2');
     location.classList.add('location');
+
     const time = document.createElement('p');
     time.classList.add('time');
 
@@ -20,33 +24,42 @@ const dom = (() => {
       location.textContent = `${res['locationName']}, ${res['country']}`;
     }
 
+    console.log(location);
+
     time.textContent = res['time'];
     weatherHeading.append(location, time);
     return weatherHeading;
   }
 
   function weatherBody(res) {
-    const weatherInfo = document.createElement('section');
-    weatherInfo.classList.add('weather-info');
+    const weatherBody = document.createElement('section');
+    weatherBody.classList.add('weather-body');
 
     const weatherMain = document.createElement('div');
     weatherMain.classList.add('weather-main');
+
+    const top = document.createElement('div');
+    top.classList.add('weather-main-top');
     const conditionIcon = document.createElement('img');
     conditionIcon.src = res['conditionIcon'];
     const temp = document.createElement('p');
     temp.textContent = res['temp'];
-    weatherMain.append(conditionIcon, temp);
+    top.append(conditionIcon, temp);
 
-    const weatherSecond = document.createElement('div');
-    weatherSecond.classList.add('weather-second');
+    const bottom = document.createElement('div');
+    bottom.classList.add('weather-main-bottom');
     const conditionText = document.createElement('p');
+    conditionText.classList.add('condition-text');
     conditionText.textContent = res['conditionText'];
     const feelsLike = document.createElement('p');
+    feelsLike.classList.add('feels-like');
     feelsLike.textContent = res['feelsLike'];
-    weatherSecond.append(conditionText, feelsLike);
+    bottom.append(conditionText, feelsLike);
 
-    const weatherThird = document.createElement('div');
-    weatherSecond.classList.add('weather-third');
+    weatherMain.append(top, bottom);
+
+    const weatherDetails = document.createElement('div');
+    weatherDetails.classList.add('weather-details');
 
     // const wind = document.createElement('div');
     // wind.classList.add('currentWind');
@@ -77,11 +90,11 @@ const dom = (() => {
       span.textContent = res[data];
 
       div.append(h4, span);
-      main.append(div);
+      weatherDetails.append(div);
     }
 
-    weatherInfo.append(weatherMain, weatherSecond, weatherThird);
-    return weatherInfo;
+    weatherBody.append(weatherMain, weatherDetails);
+    return weatherBody;
   }
 
   function displayWeatherForecast(res) {
@@ -90,18 +103,21 @@ const dom = (() => {
 
   function weatherForecast(res) {
     const container = document.createElement('div');
-    const title = document.querySelector('h2');
+    container.classList.add('forecast-container');
+    const title = document.createElement('h2');
     title.classList.add('forecast-title');
     title.textContent = 'Weekly Forecast';
 
     const days = document.createElement('div');
 
     res.forEach((day) => {
-      const container = document.createElement('div');
+      const dayContainer = document.createElement('div');
+      dayContainer.classList.add('day-container');
       const date = document.createElement('span');
       date.textContent = day['date'];
 
       const main = document.createElement('div');
+      main.classList.add('day-main');
       const icon = document.createElement('img');
       icon.src = day['conditionIcon'];
       const maxTemp = document.createElement('span');
@@ -109,12 +125,13 @@ const dom = (() => {
       main.append(icon, maxTemp);
 
       const minTemp = document.createElement('span');
+      minTemp.classList.add('min-temp');
       minTemp.textContent = day['minTemp'];
 
       const wind = document.createElement('span');
       wind.textContent = day['maxWind'];
-
-      days.append(date, main, minTemp, wind);
+      dayContainer.append(date, main, minTemp, wind);
+      days.append(dayContainer);
     });
 
     container.append(title, days);
