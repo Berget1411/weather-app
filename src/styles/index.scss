@@ -51,14 +51,15 @@ video {
 }
 
 body {
-  background-color: rgb(139, 179, 255);
-  height: 100vh;
+  background: linear-gradient(#0ea5e9, #0369a1);
+  height: 120vh;
 }
 
 h1,
 h2,
 h3,
-p {
+p,
+span {
   font-family: 'Montserrat', sans-serif;
   color: white;
 }

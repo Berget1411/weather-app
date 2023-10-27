@@ -7,6 +7,7 @@ header {
   align-items: center;
 
   padding: 35px 30px;
+  margin-bottom: 20px;
 }
 
 .banner {
@@ -29,7 +30,7 @@ header {
   gap: 15px;
   padding: 8px 14px;
   border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   border: 2px solid transparent;
   transition: border-color 0.2s;
 
@@ -69,7 +70,7 @@ header {
   gap: 10px;
 
   button {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px;
     border-radius: 30px;
