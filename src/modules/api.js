@@ -28,12 +28,11 @@ const api = (() => {
       conditionText: data['current']['condition']['text'],
       conditionIcon: data['current']['condition']['icon'],
 
-      humidity: data['current']['humidity'],
+      humidity: `${data['current']['humidity']}%`,
       UV: data['current']['UV'],
-      visibility: data['current']['vis_km'],
-      cloudiness: data['current']['cloud'],
-      chanceOfRain:
-        data['forecast']['forecastday'][0]['day']['daily_chance_of_rain'],
+      visibility: `${data['current']['vis_km']}km`,
+      cloudiness: `${data['current']['cloud']}%`,
+      chanceOfRain: `${data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']}%`,
       sunrise: data['forecast']['forecastday'][0]['astro']['sunrise'],
       sunset: data['forecast']['forecastday'][0]['astro']['sunset'],
       moonPhase: data['forecast']['forecastday'][0]['astro']['moon_phase'],
@@ -42,11 +41,11 @@ const api = (() => {
     if (unit === 'metric') {
       usedData['temp'] = `${data['current']['temp_c']}°C`;
       usedData['feelsLike'] = `Feels like ${data['current']['feelslike_c']}°C`;
-      usedData['wind'] = data['current']['wind_kph'];
+      usedData['wind'] = `${data['current']['wind_kph']} kph`;
     } else {
       usedData['temp'] = `${data['current']['temp_f']}°F`;
       usedData['feelsLike'] = `Feels like ${data['current']['feelslike_f']}°F`;
-      usedData['wind'] = data['current']['wind_mph'];
+      usedData['wind'] = `${data['current']['wind_mph']} mph`;
     }
 
     return usedData;
