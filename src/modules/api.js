@@ -16,24 +16,18 @@ const api = (() => {
     return data;
   }
 
-  async function getCurrentWeather(location) {
+  async function getCurrentWeather(location, unit) {
     const data = await getWeatherData(location);
     console.log(data);
 
-    return {
+    const usedData = {
       locationName: data['location']['name'],
       country: data['location']['country'],
       time: formatCurrentDate(data['location']['localtime']),
 
-      tempC: data['current']['temp_c'],
-      tempF: data['current']['temp_f'],
-      feelsLikeC: data['current']['feelslike_c'],
-      feelsLikeF: data['current']['feelslike_f'],
       conditionText: data['current']['condition']['text'],
       conditionIcon: data['current']['condition']['icon'],
 
-      windMph: data['current']['wind_mph'],
-      windKph: data['current']['wind_kph'],
       humidity: data['current']['humidity'],
       UV: data['current']['UV'],
       visibility: data['current']['vis_km'],
@@ -44,6 +38,18 @@ const api = (() => {
       sunset: data['forecast']['forecastday'][0]['astro']['sunset'],
       moonPhase: data['forecast']['forecastday'][0]['astro']['moon_phase'],
     };
+
+    if (unit === 'metric') {
+      usedData['temp'] = data['current']['temp_c'];
+      usedData['feelsLike'] = data['current']['feelslike_c'];
+      usedData['wind'] = data['current']['wind_kph'];
+    } else {
+      usedData['temp'] = data['current']['temp_f'];
+      usedData['feelsLike'] = data['current']['feelslike_f'];
+      usedData['wind'] = data['current']['wind_mph'];
+    }
+
+    return usedData;
   }
 
   async function getWeatherForecast(location) {
