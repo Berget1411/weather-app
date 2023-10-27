@@ -33,19 +33,29 @@ const api = (() => {
       visibility: `${data['current']['vis_km']}km`,
       cloudiness: `${data['current']['cloud']}%`,
       chanceOfRain: `${data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']}%`,
-      sunrise: data['forecast']['forecastday'][0]['astro']['sunrise'],
-      sunset: data['forecast']['forecastday'][0]['astro']['sunset'],
+      sunrise: data['forecast']['forecastday'][0]['astro']['sunrise'].substring(
+        5,
+        -1,
+      ),
+      sunset: data['forecast']['forecastday'][0]['astro']['sunset'].substring(
+        5,
+        -1,
+      ),
       moonPhase: data['forecast']['forecastday'][0]['astro']['moon_phase'],
     };
 
     if (unit === 'metric') {
-      usedData['temp'] = `${data['current']['temp_c']}°C`;
-      usedData['feelsLike'] = `Feels like ${data['current']['feelslike_c']}°C`;
-      usedData['wind'] = `${data['current']['wind_kph']} kph`;
+      usedData['temp'] = `${Math.round(data['current']['temp_c'])}°C`;
+      usedData['feelsLike'] = `Feels like ${Math.round(
+        data['current']['feelslike_c'],
+      )}°C`;
+      usedData['wind'] = `${Math.round(data['current']['wind_kph'])} kph`;
     } else {
-      usedData['temp'] = `${data['current']['temp_f']}°F`;
-      usedData['feelsLike'] = `Feels like ${data['current']['feelslike_f']}°F`;
-      usedData['wind'] = `${data['current']['wind_mph']}mph`;
+      usedData['temp'] = `${Math.round(data['current']['temp_f'])}°F`;
+      usedData['feelsLike'] = `Feels like ${Math.round(
+        data['current']['feelslike_f'],
+      )}°F`;
+      usedData['wind'] = `${Math.round(data['current']['wind_mph'])}mph`;
     }
 
     return usedData;
@@ -64,15 +74,25 @@ const api = (() => {
       };
 
       if (unit === 'metric') {
-        day['maxTemp'] = data['forecast']['forecastday'][i]['day']['maxtemp_c'];
-        day['minTemp'] = data['forecast']['forecastday'][i]['day']['mintemp_c'];
-        day['maxWind'] =
-          data['forecast']['forecastday'][i]['day']['maxwind_kph'];
+        day['maxTemp'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['maxtemp_c'],
+        );
+        day['minTemp'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['mintemp_c'],
+        );
+        day['maxWind'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['maxwind_kph'],
+        );
       } else {
-        day['maxTemp'] = data['forecast']['forecastday'][i]['day']['maxtemp_f'];
-        day['minTemp'] = data['forecast']['forecastday'][i]['day']['mintemp_f'];
-        day['maxWind'] =
-          data['forecast']['forecastday'][i]['day']['maxwind_mph'];
+        day['maxTemp'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['maxtemp_f'],
+        );
+        day['minTemp'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['mintemp_f'],
+        );
+        day['maxWind'] = Math.round(
+          data['forecast']['forecastday'][i]['day']['maxwind_mph'],
+        );
       }
 
       forecastData.push(day);
