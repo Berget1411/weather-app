@@ -24,8 +24,6 @@ const dom = (() => {
       location.textContent = `${res['locationName']}, ${res['country']}`;
     }
 
-    console.log(location);
-
     time.textContent = res['time'];
     weatherHeading.append(location, time);
     return weatherHeading;

@@ -20,7 +20,6 @@ const handler = () => {
       })
       .catch((rej) => {
         dom.displayError(rej);
-        console.log(rej);
       });
 
     api
@@ -30,7 +29,6 @@ const handler = () => {
       })
       .catch((rej) => {
         dom.displayError(rej);
-        console.log(rej);
       });
   }
 };
