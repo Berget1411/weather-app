@@ -83,3 +83,8 @@ header {
     }
   }
 }
+
+.active-unit {
+  border-color: white !important;
+  pointer-events: none;
+}
