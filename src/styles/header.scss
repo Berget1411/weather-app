@@ -1,0 +1,84 @@
+@use 'index';
+@use 'breakpoints';
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 35px 30px;
+}
+
+.banner {
+  @include index.flex-center;
+  gap: 3px;
+  text-decoration: none;
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  img {
+    @include index.icon-size(40px);
+  }
+}
+
+#search-form {
+  @include index.flex-center;
+  gap: 15px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+
+  &:focus-within {
+    border-color: white !important;
+  }
+
+  input {
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  #clear-button {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #search-button img {
+    @include index.icon-size(22px);
+  }
+}
+
+.units {
+  @include index.flex-center;
+  gap: 10px;
+
+  button {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: white;
+    }
+  }
+}
