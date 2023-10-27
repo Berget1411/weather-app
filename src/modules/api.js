@@ -29,7 +29,7 @@ const api = (() => {
       conditionIcon: data['current']['condition']['icon'],
 
       humidity: `${data['current']['humidity']}%`,
-      UV: data['current']['UV'],
+      UV: data['current']['uv'],
       visibility: `${data['current']['vis_km']}km`,
       cloudiness: `${data['current']['cloud']}%`,
       chanceOfRain: `${data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']}%`,
@@ -45,7 +45,7 @@ const api = (() => {
     } else {
       usedData['temp'] = `${data['current']['temp_f']}°F`;
       usedData['feelsLike'] = `Feels like ${data['current']['feelslike_f']}°F`;
-      usedData['wind'] = `${data['current']['wind_mph']} mph`;
+      usedData['wind'] = `${data['current']['wind_mph']}mph`;
     }
 
     return usedData;
@@ -84,7 +84,7 @@ const api = (() => {
     return `${format(
       parseISO(date.substring(10, -1)),
       'EEEE dd MMMM yyyy',
-    )} | ${date.substring(10, 15)}`;
+    )} | ${date.substring(10, 16)}`;
   }
 
   function formatForecastDate(date) {
