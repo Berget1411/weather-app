@@ -18,6 +18,7 @@ const api = (() => {
 
   async function getCurrentWeather(location) {
     const data = await getWeatherData(location);
+    console.log(data);
 
     return {
       locationName: data['location']['name'],
@@ -69,7 +70,10 @@ const api = (() => {
   }
 
   function formatCurrentDate(date) {
-    return format(parseISO(date), 'EEEE dd MMMM yyyy | hh:mm');
+    return `${format(
+      parseISO(date.substring(10, -1)),
+      'EEEE dd MMMM yyyy',
+    )} | ${date.substring(10, 15)}`;
   }
 
   function formatForecastDate(date) {
