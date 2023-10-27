@@ -40,12 +40,12 @@ const api = (() => {
     };
 
     if (unit === 'metric') {
-      usedData['temp'] = data['current']['temp_c'];
-      usedData['feelsLike'] = data['current']['feelslike_c'];
+      usedData['temp'] = `${data['current']['temp_c']}°C`;
+      usedData['feelsLike'] = `Feels like ${data['current']['feelslike_c']}°C`;
       usedData['wind'] = data['current']['wind_kph'];
     } else {
-      usedData['temp'] = data['current']['temp_f'];
-      usedData['feelsLike'] = data['current']['feelslike_f'];
+      usedData['temp'] = `${data['current']['temp_f']}°F`;
+      usedData['feelsLike'] = `Feels like ${data['current']['feelslike_f']}°F`;
       usedData['wind'] = data['current']['wind_mph'];
     }
 
