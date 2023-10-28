@@ -3,7 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Weather app</title>
-  <script defer src="runtime3616d36c1319e254d077.js"></script><script defer src="bundle7c403ca36a73ac46e206.js"></script></head>
-  <body></body>
+  <script defer src="runtime1630aa158c9c991237d0.js"></script><script defer src="bundlee6dba3310a5154606df1.js"></script></head>
+  <body>
+    <header>
+      <a class="banner" href="#">
+        <img src="logo.svg" alt="logo" />
+        <h1>Weather</h1>
+      </a>
+      <form id="search-form" action="#" method="get">
+        <input
+          type="text"
+          placeholder="Search location"
+          id="search-input"
+          autocomplete="off"
+        />
+        <button id="clear-button" type="button">&#10005;</button>
+        <button id="search-button">
+          <img src="search.svg" alt="search" />
+        </button>
+      </form>
+      <div class="units">
+        <button id="metric" class="active-unit">°C, km/h</button>
+        <button id="imperial">°F, mph</button>
+      </div>
+    </header>
+    <div class="loading-container">
+      <div id="loading">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <main class="main-container"></main>
+    <footer>
+      <p>
+        Built by <a href="https://github.com/Berget1411">Berget</a> |
+        <a href="https://github.com/Berget1411/weather-app">Source code</a>
+      </p>
+    </footer>
+  </body>
 </html>
