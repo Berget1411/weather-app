@@ -6,6 +6,7 @@ const handler = () => {
   const searchInput = document.querySelector('#search-input');
   const useMetricButton = document.querySelector('#metric');
   const useImperialButton = document.querySelector('#imperial');
+  const clearSearchButton = document.querySelector('#clear-button');
   let unit = 'metric';
   let location = 'Sweden';
 
@@ -28,6 +29,12 @@ const handler = () => {
     });
     e.target.classList.toggle('active-unit');
     displayWeather(location, unit);
+  }
+
+  clearSearchButton.addEventListener('click', clearSearch);
+
+  function clearSearch() {
+    searchInput.value = '';
   }
 };
 

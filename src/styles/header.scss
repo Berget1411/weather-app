@@ -37,6 +37,13 @@ header {
     border-color: white !important;
   }
 
+  &:hover #clear-button,
+  &:focus-within #clear-button {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.2s;
+  }
+
   input {
     width: 200px;
     background-color: transparent;
