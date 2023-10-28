@@ -32,7 +32,9 @@ const api = (() => {
       UV: data['current']['uv'],
       visibility: `${data['current']['vis_km']}km`,
       cloudiness: `${data['current']['cloud']}%`,
+      windDegree: data['current']['wind_degree'] - 180,
       chanceOfRain: `${data['forecast']['forecastday'][0]['day']['daily_chance_of_rain']}%`,
+
       sunrise: data['forecast']['forecastday'][0]['astro']['sunrise'].substring(
         5,
         -1,
@@ -71,6 +73,8 @@ const api = (() => {
         date: formatForecastDate(data['forecast']['forecastday'][i]['date']),
         conditionIcon:
           data['forecast']['forecastday'][i]['day']['condition']['icon'],
+        windDegree:
+          data['forecast']['forecastday'][i]['hour'][14]['wind_degree'] - 180,
       };
 
       if (unit === 'metric') {

@@ -70,13 +70,18 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 40px;
 
+  div div {
+    display: flex;
+    position: relative;
+  }
+
   h4 {
     color: rgb(211, 211, 211);
     margin-bottom: 7px;
     font-size: 1.1em;
   }
 
-  span {
+  p {
     font-size: 1.3em;
     font-weight: bold;
   }
@@ -109,12 +114,24 @@ main {
     @include index.icon-size(30px);
   }
 
-  .day-main {
+  .day-main,
+  .max-wind {
     display: flex;
     align-items: center;
+    gap: 6px;
   }
 
   .min-temp {
     color: rgb(211, 211, 211);
+  }
+}
+
+.wind-degree {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 23px;
+    fill: white;
   }
 }
