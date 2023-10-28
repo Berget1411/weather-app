@@ -159,10 +159,15 @@ const dom = (() => {
   }
 
   function displayError(rej) {
-    main.innerHTML = '';
+    main.textContent = '';
     const error = document.createElement('p');
     error.classList.add('error-message');
-    error.textContent = 'Location does not exist';
+    if (!document.querySelector('#search-input').value) {
+      error.textContent = 'Nothing to geocode';
+    } else {
+      error.textContent = 'Location not found';
+    }
+
     main.append(error);
   }
 
