@@ -7,7 +7,7 @@
 
 @media (max-width: 700px) {
   main {
-    gap: 10px !important;
+    gap: 30px !important;
   }
 
   .current-weather-section {
@@ -23,7 +23,7 @@
 
   .weather-main {
     flex-direction: row !important;
-    flex-wrap: wrap;
+
     justify-content: center;
   }
 
@@ -51,5 +51,13 @@
   .min-temp {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
+  }
+}
+
+@media (max-width: 560px) {
+  .weather-main {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 0px !important;
   }
 }
