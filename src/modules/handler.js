@@ -1,5 +1,4 @@
-import api from './api';
-import dom from './dom';
+import displayWeather from './displayWeather';
 import '../styles/main.scss';
 
 const handler = () => {
@@ -16,26 +15,6 @@ const handler = () => {
     e.preventDefault();
     location = searchInput.value;
     displayWeather(location, unit);
-  }
-
-  function displayWeather(location, unit) {
-    api
-      .getCurrentWeather(location, unit)
-      .then((res) => {
-        dom.displayCurrentWeather(res);
-      })
-      .catch((rej) => {
-        dom.displayError(rej);
-      });
-
-    api
-      .getWeatherForecast(location, unit)
-      .then((res) => {
-        dom.displayWeatherForecast(res);
-      })
-      .catch((rej) => {
-        dom.displayError(rej);
-      });
   }
 
   useMetricButton.addEventListener('click', changeUnit);
