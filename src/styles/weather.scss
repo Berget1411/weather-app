@@ -30,16 +30,16 @@ main {
 
 .weather-body {
   display: grid;
-  gap: 40px;
+  gap: 50px;
   grid-template-columns: 1fr 2fr;
 }
 
 .weather-main {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 
-  gap: 16px;
+  gap: 20px;
 
   .weather-main-top {
     display: flex;
@@ -68,7 +68,7 @@ main {
 .weather-details {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
+  gap: 30px;
 
   div div {
     display: flex;
