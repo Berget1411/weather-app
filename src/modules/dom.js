@@ -3,6 +3,19 @@ import api from './api';
 const dom = (() => {
   const main = document.querySelector('main');
 
+  function loading(state) {
+    const loadingSpinner = document.querySelector('#loading');
+    console.log(state);
+
+    if (state === 'loading') {
+      loadingSpinner.classList.remove('hide');
+      main.classList.add('hide');
+    } else {
+      loadingSpinner.classList.add('hide');
+      main.classList.remove('hide');
+    }
+  }
+
   async function displayWeather(location, unit) {
     clearMain();
     try {
@@ -134,7 +147,6 @@ const dom = (() => {
     const days = document.createElement('div');
 
     res.forEach((day) => {
-      console.log(day['windDegree']);
       const dayContainer = document.createElement('div');
       dayContainer.classList.add('day-container');
       const date = document.createElement('span');
@@ -187,7 +199,7 @@ const dom = (() => {
     main.textContent = '';
   }
 
-  return { displayWeather };
+  return { displayWeather, loading };
 })();
 
 export default dom;
