@@ -1,4 +1,4 @@
-import displayWeather from './displayWeather';
+import dom from './dom';
 import '../styles/main.scss';
 
 const handler = () => {
@@ -15,7 +15,7 @@ const handler = () => {
   function submitForm(e) {
     e.preventDefault();
     location = searchInput.value;
-    displayWeather(location, unit);
+    dom.displayWeather(location, unit);
   }
 
   useMetricButton.addEventListener('click', changeUnit);
@@ -28,7 +28,7 @@ const handler = () => {
       button.classList.remove('active-unit');
     });
     e.target.classList.toggle('active-unit');
-    displayWeather(location, unit);
+    dom.displayWeather(location, unit);
   }
 
   clearSearchButton.addEventListener('click', clearSearch);

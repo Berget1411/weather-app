@@ -1,7 +1,7 @@
 import handler from './modules/handler';
-import displayWeather from './modules/displayWeather';
+import dom from './modules/dom';
 
 window.onload = () => {
   handler();
-  displayWeather('Sweden', 'metric'); //default search
+  dom.displayWeather('Sweden', 'metric'); //default search
 };

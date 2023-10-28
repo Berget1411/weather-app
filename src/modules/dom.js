@@ -1,15 +1,31 @@
+import api from './api';
+
 const dom = (() => {
   const main = document.querySelector('main');
 
-  function displayCurrentWeather(res) {
-    main.innerHTML = '';
-    const currentWeather = document.createElement('div');
-    currentWeather.classList.add('current-weather-section');
-    currentWeather.append(weatherHeading(res), weatherBody(res));
-    main.append(currentWeather);
+  async function displayWeather(location, unit) {
+    clearMain();
+    try {
+      const currentWeather = await api.getCurrentWeather(location, unit);
+      const weatherForecast = await api.getWeatherForecast(location, unit);
+      renderWeather(currentWeather, weatherForecast);
+    } catch (error) {
+      displayError();
+    }
   }
 
-  function weatherHeading(res) {
+  function renderWeather(current, forecast) {
+    main.append(getCurrentWeather(current), getWeatherForecast(forecast));
+  }
+
+  function getCurrentWeather(res) {
+    const currentWeather = document.createElement('div');
+    currentWeather.classList.add('current-weather-section');
+    currentWeather.append(currentHeading(res), currentBody(res));
+    return currentWeather;
+  }
+
+  function currentHeading(res) {
     const weatherHeading = document.createElement('div');
     weatherHeading.classList.add('weather-heading');
     const location = document.createElement('h2');
@@ -29,7 +45,7 @@ const dom = (() => {
     return weatherHeading;
   }
 
-  function weatherBody(res) {
+  function currentBody(res) {
     const weatherBody = document.createElement('section');
     weatherBody.classList.add('weather-body');
 
@@ -108,11 +124,7 @@ const dom = (() => {
     return weatherBody;
   }
 
-  function displayWeatherForecast(res) {
-    main.append(weatherForecast(res));
-  }
-
-  function weatherForecast(res) {
+  function getWeatherForecast(res) {
     const container = document.createElement('div');
     container.classList.add('forecast-container');
     const title = document.createElement('h2');
@@ -158,8 +170,8 @@ const dom = (() => {
     return container;
   }
 
-  function displayError(rej) {
-    main.textContent = '';
+  function displayError() {
+    clearMain();
     const error = document.createElement('p');
     error.classList.add('error-message');
     if (!document.querySelector('#search-input').value) {
@@ -171,7 +183,11 @@ const dom = (() => {
     main.append(error);
   }
 
-  return { displayCurrentWeather, displayWeatherForecast, displayError };
+  function clearMain() {
+    main.textContent = '';
+  }
+
+  return { displayWeather };
 })();
 
 export default dom;
