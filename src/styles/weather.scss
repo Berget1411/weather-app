@@ -7,10 +7,20 @@ main {
   gap: 60px;
 }
 
+.error-message {
+  background-color: white;
+  color: red;
+  padding: 7px 17px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
 .current-weather-section {
   display: grid;
   gap: 50px;
   width: 700px;
+  margin-top: 20px;
 }
 
 .weather-heading {
