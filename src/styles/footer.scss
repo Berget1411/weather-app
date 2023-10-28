@@ -1,12 +1,13 @@
 footer {
-  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 30px;
-  display: flex;
-  justify-content: center;
 
   font-weight: bold;
   p {
     color: rgb(211, 211, 211);
+    text-align: center;
   }
   a {
     text-decoration: none;
