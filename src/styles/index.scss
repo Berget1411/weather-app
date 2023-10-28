@@ -52,7 +52,6 @@ video {
 
 body {
   background: linear-gradient(#0ea5e9, #0369a1);
-  height: 120vh;
 }
 
 h1,
@@ -68,4 +67,8 @@ img {
   //recolor svg to white
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%)
     hue-rotate(320deg) brightness(112%) contrast(99%);
+}
+
+.error-message {
+  height: 74.7vh;
 }
