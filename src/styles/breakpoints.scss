@@ -1,0 +1,55 @@
+@media (max-width: 850px) {
+  header {
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    gap: 10px !important;
+  }
+
+  .current-weather-section {
+    width: 75% !important;
+    gap: 10px !important;
+  }
+
+  .weather-body {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr 1.8fr !important;
+    gap: 30px !important;
+  }
+
+  .weather-main {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .weather-details {
+    gap: 20px !important;
+  }
+
+  .forecast-container {
+    width: 90% !important;
+    justify-content: none;
+  }
+
+  .day-container {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+    justify-items: center;
+    gap: 5px !important;
+  }
+
+  .day-main {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .min-temp {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+}

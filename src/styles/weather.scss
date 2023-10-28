@@ -2,8 +2,9 @@
 @use 'breakpoints';
 
 main {
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 60px;
 }
 
@@ -17,7 +18,10 @@ main {
 }
 
 .current-weather-section {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   gap: 50px;
   width: 700px;
   margin-top: 20px;
@@ -27,12 +31,12 @@ main {
   text-align: center;
 
   h2 {
-    font-size: 2.5em;
+    font-size: 2.3em;
     font-weight: bold;
   }
 
   p {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: bold;
     color: rgb(211, 211, 211);
   }
@@ -100,12 +104,16 @@ main {
 .forecast-container {
   display: grid;
   justify-content: center;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
+
+  .day-container:not(:last-child) {
+    border-bottom: 2px solid white;
+  }
 }
 
 .forecast-title {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -119,7 +127,6 @@ main {
   font-size: 1.2em;
   font-weight: bold;
   padding: 14px 0px;
-  border-bottom: 2px solid white;
 
   img {
     @include index.icon-size(30px);
