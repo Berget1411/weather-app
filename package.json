@@ -1,5 +1,5 @@
 {
-  "name": "taskstack",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "Weather application used to show forecast from weatherapi.com",
   "main": "index.js",
