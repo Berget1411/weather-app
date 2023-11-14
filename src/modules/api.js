@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 
 const api = (() => {
-  const API_KEY = '7160bd18f24a414b9b175538232510';
+  const API_KEY = 'eb95d14a6e3a4ae5b57102057231411';
   const DEFAULT_LOCATION = 'sweden';
   const DAYS = '8';
 
